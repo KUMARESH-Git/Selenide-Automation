@@ -16,54 +16,38 @@ Write automated web GUI test
  */
 package com.luminar.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.google.common.base.Verify;
-import com.luminar.pageobjects.IMDbPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
+import com.luminar.pageobjects.IMDbGamePage;
+import com.luminar.pageobjects.IMDbHomePage;
+import com.luminar.pageobjects.IMDbSearchPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class IMDbTest {
     static WebDriver driver;
-    static IMDbPage imdbPage = new IMDbPage(driver);
+    static IMDbHomePage imdbHomePage = new IMDbHomePage(driver);
+    static IMDbSearchPage imdbSearchPage = new IMDbSearchPage(driver);
+    static IMDbGamePage imdbGamePage = new IMDbGamePage(driver);
 
     @BeforeTest
     public void setUp() {
         System.setProperty("webdriver.chrome.driver","D:\\Automation\\chromedriver.exe");
         driver = new ChromeDriver();
-        System.out.println("Driver setup started...");
     }
-    @Test(description = "Verify games of thrones video game search result in imdb.com website")
-    public void search() {
-        open("https://www.imdb.com/");
-        driver.manage().window().maximize();
-        //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        Configuration.timeout = 60000;
-        //imdbPage = new IMDbPage(driver);
-        //$(By.name("q")).setValue("games of thrones").pressEnter();
-        $(imdbPage.getSearchBox()).setValue("games of thrones").pressEnter();
-        Configuration.timeout = 60000;
-        //$(By.xpath("//a[contains(text(),'Video Game')]")).click();
-        $(imdbPage.getVideoGameSearch()).click();
-        Configuration.timeout = 60000;
-        //int NumOfGames = $$(By.xpath("//a[contains(text(),'Game of Thrones')]")).size();
-        int NumOfGames = $$(imdbPage.getGameOfThrones()).size();
-        Configuration.timeout = 60000;
-        System.out.println("There are: " + NumOfGames + " Results found for Games!!");
-        Assert.assertEquals(title(), "Find - IMDb", "Titles are matching!!");
 
-        //$("#header").shouldHave(exactText("Find - IMDb"));
-        //$("title").shouldHave(text("Find - IMDb"));
+    @Test(description = "Verify games of thrones video game search result in imdb.com website")
+    public void imdBsearch() {
+        open("https://www.imdb.com/");
+        Reporter.log("IMDb Website Launched Successfully");
+        imdbHomePage.searchIMDb();
+        imdbSearchPage.openGameResult();
+        imdbGamePage.verifyGamePage();
     }
+
     @AfterTest
     public void tearDown() {
-        closeWindow();
-        //driver.quit();
+        closeWebDriver();
     }
-
 }
