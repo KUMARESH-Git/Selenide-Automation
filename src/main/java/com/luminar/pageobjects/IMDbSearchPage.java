@@ -1,5 +1,5 @@
 /*
-IMDb Search Page Operations
+IMDb Search Page Operation
  */
 package com.luminar.pageobjects;
 

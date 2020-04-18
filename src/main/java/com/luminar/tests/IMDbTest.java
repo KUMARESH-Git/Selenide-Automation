@@ -12,7 +12,7 @@ Write automated web GUI test
 		4.	verify correct page is opened
 		5.	make a screenshot
 		6.	generate report
-3. Demo & explain all above
+3. Demo & explain all the above
  */
 package com.luminar.tests;
 

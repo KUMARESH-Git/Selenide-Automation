@@ -1,5 +1,5 @@
 /*
-IMDb Home Page Operations
+IMDb Home Page Operation
  */
 package com.luminar.pageobjects;
 

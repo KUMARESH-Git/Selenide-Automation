@@ -1,5 +1,5 @@
 /*
-IMDb Game Page Operations
+IMDb Game Page Operation
  */
 package com.luminar.pageobjects;
 
