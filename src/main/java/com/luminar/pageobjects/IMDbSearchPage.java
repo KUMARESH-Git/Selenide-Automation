@@ -1,3 +1,6 @@
+/*
+IMDb Search Page Operations
+ */
 package com.luminar.pageobjects;
 
 import com.codeborne.selenide.commands.TakeScreenshot;

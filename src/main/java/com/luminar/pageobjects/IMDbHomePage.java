@@ -1,3 +1,6 @@
+/*
+IMDb Home Page Operations
+ */
 package com.luminar.pageobjects;
 
 import org.openqa.selenium.By;
